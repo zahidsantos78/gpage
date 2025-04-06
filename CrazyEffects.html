@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efectos Visuales Locos</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            overflow: hidden;
+            transition: background 0.5s;
+        }
+        .boton {
+            position: absolute;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <button class="boton" id="boton">¡Atrápame!</button>
+    <script>
+        const boton = document.getElementById("boton");
+        document.body.addEventListener("mousemove", (event) => {
+            const x = (event.clientX / window.innerWidth) * 255;
+            const y = (event.clientY / window.innerHeight) * 255;
+            document.body.style.background = `rgb(${x}, ${y}, 255)`;
+        });
+
+        boton.addEventListener("mouseover", () => {
+            const maxX = window.innerWidth - boton.clientWidth;
+            const maxY = window.innerHeight - boton.clientHeight;
+            boton.style.left = Math.random() * maxX + "px";
+            boton.style.top = Math.random() * maxY + "px";
+        });
+    </script>
+</body>
+</html>

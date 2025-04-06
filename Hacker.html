@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Hackeo</title>
+    <style>
+        body {
+            background: black;
+            color: limegreen;
+            font-family: monospace;
+            padding: 20px;
+        }
+        #terminal {
+            border: 2px solid limegreen;
+            padding: 10px;
+            height: 300px;
+            overflow-y: auto;
+            background: black;
+        }
+        #input {
+            width: 100%;
+            background: black;
+            color: limegreen;
+            border: none;
+            font-size: 16px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h2>Simulador de Hackeo</h2>
+    <div id="terminal"></div>
+    <input type="text" id="input" placeholder="Escribe un comando..." autofocus>
+    <script>
+        const terminal = document.getElementById("terminal");
+        const input = document.getElementById("input");
+        const comandos = [
+            "Conectando al servidor...",
+            "Accediendo a la base de datos secreta...",
+            "Descifrando contraseñas...",
+            "Obteniendo archivos clasificados...",
+            "Autenticación como administrador...",
+            "Éxito: Acceso concedido"
+        ];
+        
+        input.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                const valor = input.value;
+                input.value = "";
+                terminal.innerHTML += `> ${valor}<br>`;
+                ejecutarHackeo();
+            }
+        });
+        
+        function ejecutarHackeo() {
+            let i = 0;
+            function imprimirLinea() {
+                if (i < comandos.length) {
+                    terminal.innerHTML += comandos[i] + "<br>";
+                    terminal.scrollTop = terminal.scrollHeight;
+                    i++;
+                    setTimeout(imprimirLinea, 1000);
+                } else {
+                    terminal.innerHTML += "\n<b>Hackeo completado con éxito. 😎</b><br>";
+                }
+            }
+            imprimirLinea();
+        }
+    </script>
+</body>
+</html>
