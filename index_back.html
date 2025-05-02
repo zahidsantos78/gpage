@@ -13,6 +13,7 @@
             background: linear-gradient(135deg, #000428, #004e92);
             color: #0ff;
             text-align: center;
+            transition: background-color 0.5s ease;
         }
         header {
             padding: 20px;
@@ -50,7 +51,15 @@
     <div class="menu">
         <a href="CrazyEffects.html">Crazy Effects</a>
         <a href="Hacker.html">Hacker Mode</a>
-        <a href="">Este enlace esta en mantenimiento</a>
+        <!--No elimines el enlace solamente coméntalo-->
+        <!--<a href="#" onclick="changeBackgroundColor()">Este enlace no sirve elimínalo</a>-->
+        <!--<a href="#" onclick="changeBackgroundColor()">Este enlace no sirve elimínalo</a>-->
     </div>
+
+    <script>
+        function changeBackgroundColor() {
+            document.body.style.background = 'linear-gradient(135deg, #8B0000, #ff4500)';
+        }
+    </script>
 </body>
 </html>
